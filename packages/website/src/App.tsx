@@ -14,7 +14,12 @@ function App() {
     getData();
   }, []);
 
-  return <Folder data={data} />;
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl pb-2">Daniel Chong's Marama Coding Exercise</h1>
+      <Folder data={data} />
+    </div>
+  );
 }
 
 export default App;

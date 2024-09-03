@@ -1,15 +1,27 @@
+import { ChevronDownIcon, StopCircleIcon } from "@heroicons/react/20/solid";
 import { FolderType } from "../types/types";
-
-const folderIndent = "pl-2";
 
 export const Folder = ({ data }: { data: FolderType[] }) => {
   return data.map((row) => {
-    const topLevel = row.children ? folderIndent : "";
-    const folderNameStyle = row.children ? "text-gray-700 pl-2" : "";
+    const { name, id, children } = row;
+
+    const childLevel = children ? "pl-6" : "";
+
+    const icon = children ? (
+      <ChevronDownIcon className="size-6" />
+    ) : (
+      <StopCircleIcon className="size-2" />
+    );
+
     return (
-      <div key={row.id} className={topLevel}>
-        <div className={folderNameStyle}>{row.name}</div>
-        {row.children ? <Folder data={row.children} /> : null}
+      <div key={`${name}-${id}`}>
+        <div className="flex flex-row items-center gap-2">
+          <div className="size-6 flex items-center justify-center">{icon}</div>
+          <p>{name}</p>
+        </div>
+        <div className={childLevel}>
+          {children ? <Folder data={children} /> : null}
+        </div>
       </div>
     );
   });
