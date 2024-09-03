@@ -8,6 +8,10 @@ declare module "sst" {
       "type": "sst.aws.Function"
       "url": string
     }
+    "MyWebsite": {
+      "type": "sst.aws.StaticSite"
+      "url": string
+    }
   }
 }
 export {}
