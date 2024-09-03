@@ -1,8 +1,8 @@
 {
-  "name": "@monorepo-template/functions",
+  "name": "@marama-exercise/functions",
   "version": "0.0.0",
   "dependencies": {
-    "@monorepo-template/core": "*",
+    "@marama-exercise/core": "*",
     "sst": "*"
   },
   "devDependencies": {
