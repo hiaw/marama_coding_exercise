@@ -1,32 +1,34 @@
-# Monorepo Template
+# Daniel Chong Marama Exercise
 
-A template to create a monorepo SST ❍ Ion project.
+This is an exercise for Marama Labs with two objective
+
+1. React app with recursive folder structure
+2. API to serve the data
+
+## Tech Stack
+
+1. Web: [Vite](https://vitejs.dev/) with React in TypeScript
+2. API: [Hono](https://hono.dev/). This was chosen because AWS API Gateway V2 was causing internal server errors mainly due to permission issues.
 
 ## Get started
 
-1. Use this template to [create your own repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+This is build using [SST](https://sst.dev/) and the user should have AWS account setup. Login to AWS through CLI before starting.
 
-2. Clone the new repo.
+```bash
+aws sso login
+```
 
-   ```bash
-   git clone MY_APP
-   cd MY_APP
-   ```
+The following command will setup of the development environment by creating a serverless lambda function to serve the API and S3 bucket to serve the website.
 
-3. Rename the files in the project to the name of your app. 
+```bash
+npx sst dev
+```
 
-   ```bash
-   npx replace-in-file /marama-exercise/g MY_APP **/*.* --verbose
-   ```
+`sst deploy` will deploy the website.
 
-4. Deploy!
-
-   ```bash
-   npm install
-   npx sst deploy
-   ```
-
-6. Optionally, enable [_git push to deploy_](https://ion.sst.dev/docs/console/#autodeploy).
+```bash
+npx sst deploy
+```
 
 ## Usage
 
@@ -56,20 +58,12 @@ This template uses [npm Workspaces](https://docs.npmjs.com/cli/v8/using-npm/work
 
    This is for your Lambda functions and it uses the `core` package as a local dependency.
 
-3. `scripts/`
+3. `website/`
 
-    This is for any scripts that you can run on your SST app using the `sst shell` CLI and [`tsx`](https://www.npmjs.com/package/tsx). For example, you can run the example script using:
-
-   ```bash
-   npm run shell src/example.ts
-   ```
+   This is where the web frontend lives
 
 ### Infrastructure
 
 The `infra/` directory allows you to logically split the infrastructure of your app into separate files. This can be helpful as your app grows.
 
-In the template, we have an `api.ts`, and `storage.ts`. These export the created resources. And are imported in the `sst.config.ts`.
-
----
-
-Join the SST community over on [Discord](https://discord.gg/sst) and follow us on [Twitter](https://twitter.com/SST_dev).
+We have an `api.ts`, and `website.ts`. These export the created resources. And are imported in the `sst.config.ts`.
