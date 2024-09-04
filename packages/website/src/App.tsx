@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import { Data } from "@marama-exercise/core/data";
 
 import { Folder } from "./components/Folder";
+import { getData } from "./utils/fetchData";
 
 function App() {
   const [data, setData] = useState<Data.FolderType[]>([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const newData = (await Data.fetchData()) as Data.FolderType[];
-      setData(newData);
+    const fetch = async () => {
+      const newData = await getData();
+      if (newData) {
+        setData(newData);
+      }
     };
-    getData();
+    fetch();
   }, []);
 
   return (
