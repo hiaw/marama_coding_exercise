@@ -13,7 +13,7 @@ export default $config({
     const website = await import("./infra/website");
 
     return {
-      api: api.myApi.url,
+      api: api.dataApi.url,
       webUrl: website.myWebsite.url,
     };
   },

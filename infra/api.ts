@@ -1,4 +1,5 @@
-export const myApi = new sst.aws.Function("MyApi", {
-  url: true,
+export const dataApi = new sst.aws.Function("dataApi", {
   handler: "packages/functions/src/api.handler",
+  memory: "256 MB",
+  url: true,
 });

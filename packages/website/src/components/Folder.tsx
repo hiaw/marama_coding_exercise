@@ -1,7 +1,7 @@
 import { ChevronDownIcon, StopCircleIcon } from "@heroicons/react/20/solid";
-import { FolderType } from "../types/types";
+import { Data } from "@marama-exercise/core/data";
 
-export const Folder = ({ data }: { data: FolderType[] }) => {
+export const Folder = ({ data }: { data: Data.FolderType[] }) => {
   return data.map((row) => {
     const { name, id, children } = row;
 
